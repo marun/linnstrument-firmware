@@ -111,6 +111,15 @@ void setLed(byte col, byte row, byte color, CellDisplay disp) {
   setLed(col, row, color, disp, LED_LAYER_MAIN);
 }
 
+void setLed(byte col, byte row, byte color, byte layer) {
+  if (color <= COLOR_PINK && color != COLOR_OFF) {
+    setLed(col, row, color, cellOn, layer);
+  }
+  else {
+    setLed(col, row, COLOR_OFF, cellOff, layer);
+  }
+}
+
 void setLed(byte col, byte row, byte color, CellDisplay disp, byte layer) {
   if (col >= NUMCOLS || row >= NUMROWS || layer > MAX_LED_LAYERS) return;
 
@@ -130,6 +139,17 @@ void setLed(byte col, byte row, byte color, CellDisplay disp, byte layer) {
   if (bufferedLeds == 1) {
     performContinuousTasks();
   }
+}
+
+void setColumnLeds(byte col, byte rowOffset, byte packedColors) {
+  byte layer = LED_LAYER_CUSTOM1;
+  // we light the LEDs of user firmware mode in a dedicated custom layer
+  // this will be cleared when switching back to regular firmware mode
+  if (userFirmwareActive) {
+    layer = LED_LAYER_CUSTOM2;
+  }
+  setLed(col, rowOffset, packedColors % 11 + 1, layer);
+  setLed(col, rowOffset + 1, packedColors / 11 + 1, layer);
 }
 
 // light up a single LED with the default color

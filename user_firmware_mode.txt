@@ -124,6 +124,10 @@ CC 20       Column coordinate for cell color change with CC 22 (starts from 0)
 CC 21       Row coordinate for cell color change with CC 22 (starts from 0)
 CC 22       Change the color of the cell with the provided column and row coordinates
             see color value table in midi.txt, 7+: default color
+CC 23       Set the color of rows 1 and 2 with the provided column coordinate
+CC 24       Set the color of rows 3 and 4 with the provided column coordinate
+CC 25       Set the color of rows 5 and 6 with the provided column coordinate
+CC 26       Set the color of rows 7 and 8 with the provided column coordinate
 
 
 Examples

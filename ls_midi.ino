@@ -415,6 +415,30 @@ void handleMidiInput(unsigned long nowMicros) {
               checkRefreshLedColumn(micros());
             }
             break;
+          case 23:
+            if (displayMode == displayNormal) {
+              setColumnLeds(midiCellColCC, 0, midiData2);
+              checkRefreshLedColumn(micros());
+            }
+            break;
+          case 24:
+            if (displayMode == displayNormal) {
+              setColumnLeds(midiCellColCC, 2, midiData2);
+              checkRefreshLedColumn(micros());
+            }
+            break;
+          case 25:
+            if (displayMode == displayNormal) {
+              setColumnLeds(midiCellColCC, 4, midiData2);
+              checkRefreshLedColumn(micros());
+            }
+            break;
+          case 26:
+            if (displayMode == displayNormal) {
+              setColumnLeds(midiCellColCC, 6, midiData2);
+              checkRefreshLedColumn(micros());
+            }
+            break;
           case 38:
             if (lastRpnMsb != 127 || lastRpnLsb != 127) {
               lastDataLsb = midiData2;
